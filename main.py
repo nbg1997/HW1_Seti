@@ -425,5 +425,19 @@ class AudioEditorApp(ctk.CTk):
 
 # Точка входа в программу
 if __name__ == "__main__":
+    # КАЧЕСТВЕННАЯ ОБРАБОТКА ОШИБОК (Требование ТЗ)
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    ffmpeg_path = os.path.join(current_dir, "ffmpeg.exe")
+
+    if not os.path.exists(ffmpeg_path):
+        messagebox.showerror(
+            "Критическая ошибка",
+            "Файл ffmpeg.exe не найден!\n\n"
+            "Пожалуйста, скачайте его и поместите в корневую папку программы "
+            "для корректной работы с MP3-файлами."
+        )
+        # Завершаемся с ненулевым кодом (1 означает ошибку)
+        sys.exit(1)
+
     app = AudioEditorApp()
     app.mainloop()
