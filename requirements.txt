@@ -1,5 +1,0 @@
-customtkinter
-pygame
-pydub
-numpy
-audioop-lts
